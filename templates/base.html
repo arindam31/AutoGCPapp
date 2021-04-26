@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+    <div>
+    <h1>Project SetUp</h1>
+        <a href="{{ url_for('home') }}">Home</a>
+    </div>
+    <hr>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+    {% block content %}
+    <a href="{{ url_for('get_gcp_projects') }}">Get All GCB projects</a><br>
+    <a href="{{ url_for('get_firebase_projects') }}">Get All Firebase Projects</a><br>
+    <a href="{{ url_for('get_app_page') }}">Get All Android Apps</a><br>
+    <a href="{{ url_for('add_firebase_project_to_gcp') }}">Create FireBase Project</a><br>
+    <a href="{{ url_for('create_android_app') }}">Create Android App</a><br>
+    <a href="{{ url_for('create_ios_app') }}">Create IOS App</a><br>
+    {% endblock %}
+    </body>
+</html>

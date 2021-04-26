@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Create an Android app in FB Project</h1>
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.fb_proj.label }}<br>
+            {{ form.fb_proj(size=32) }}
+        </p>
+         <p>
+            {{ form.display_name.label }}<br>
+            {{ form.display_name(size=32) }}
+        </p>
+         <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
