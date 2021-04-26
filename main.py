@@ -77,7 +77,6 @@ def get_firebase_projects():
 @app.route('/androidApps', methods=['POST'])
 def get_android_apps():
     """Get all Android apps """
-    print(request.form)
     if request.method == 'POST':
         fb_proj = request.form['fb_proj']
 
@@ -90,7 +89,6 @@ def get_android_apps():
         **session['credentials'])
     fb = OAuth2Session(client_id=client_secret['web']['client_id'], token=session['oauth_token'])
 
-    print(fb_proj)
     resp = fb.get(f'https://firebase.googleapis.com/v1beta1/projects/{fb_proj}/androidApps')
 
     return jsonify(resp.json())
@@ -139,7 +137,6 @@ def add_firebase_project_to_gcp():
             flash(f'Adding Firebase to GCP: {form.gcp_proj.data}')
             resp = fb.post(
                 f'https://firebase.googleapis.com/v1beta1/projects/{form.gcp_proj.data}:addFirebase')
-            print(f'FB Project created:{resp.json()}')
             if 'error' in resp.json().keys():
                 flash(resp.json()['error'])
             return redirect('/')
